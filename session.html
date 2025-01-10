@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Form</title>
+  <style>
+    /* General Styles */
+    :root {
+      --text: #333; /* Default text color */
+      --card-bg: #fff; /* Background color for form */
+      --primary: #fde047; /* Primary color */
+      --accent-1: #3b82f6; /* Bright blue for accents */
+      --accent-2: #ef4444; /* Bright red for accents */
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: var(--primary);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      position: relative;
+      overflow: auto; /* Ensure scrolling is enabled */
+    }
+
+    /* Fitness-Themed Images */
+    .fitness-image {
+      position: fixed;
+      z-index: -1;
+      opacity: 0.7; /* Slightly transparent */
+      animation: float 6s infinite ease-in-out;
+    }
+
+    .dumbbell {
+      width: 100px; /* Smaller size for mobile */
+      top: 5%;
+      left: 5%;
+    }
+
+    .pull-up-bar {
+      width: 120px; /* Smaller size for mobile */
+      bottom: 10%;
+      right: 5%;
+      animation-duration: 8s;
+    }
+
+    .treadmill {
+      width: 100px; /* Smaller size for mobile */
+      top: 20%;
+      right: 10%;
+      animation-duration: 7s;
+    }
+
+    .weightlifter {
+      width: 80px; /* Smaller size for mobile */
+      bottom: 5%;
+      left: 10%;
+      animation-duration: 5s;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px); /* Smaller float for mobile */
+      }
+    }
+
+    /* Contact Form Container */
+    .contact-form-container {
+      background-color: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 90%; /* Full width for mobile */
+      width: 100%;
+      position: relative;
+      z-index: 1;
+      margin: 1rem; /* Smaller margin for mobile */
+    }
+
+    .contact-form-container h2 {
+      margin-bottom: 1.5rem;
+      color: var(--text);
+      text-align: center;
+      font-size: 1.8rem; /* Smaller font size for mobile */
+    }
+
+    /* Form Group Styling */
+    .form-group {
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 1rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 3px solid var(--text);
+      background-color: var(--card-bg);
+      font-size: 1rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      box-sizing: border-box; /* Ensures padding is included in width */
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 4px 4px 0 var(--primary);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px; /* Smaller height for mobile */
+    }
+
+    /* Submit Button Styling */
+    .submit-btn {
+      background-color: var(--accent-2);
+      color: var(--text);
+      border: none;
+      padding: 0.75rem 1.5rem; /* Smaller padding for mobile */
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 4px 4px 0 var(--text);
+      transition: all 0.3s ease;
+      width: 100%; /* Full width for mobile */
+    }
+
+    .submit-btn:hover {
+      background-color: var(--accent-1);
+      box-shadow: 6px 6px 0 var(--text);
+      transform: translate(-2px, -2px);
+    }
+
+    .submit-btn:active {
+      background-color: var(--accent-2);
+      box-shadow: 2px 2px 0 var(--text);
+      transform: translate(0, 0);
+    }
+
+    /* Responsive Design for Tablets */
+    @media (min-width: 768px) {
+      .dumbbell {
+        width: 150px;
+        top: 10%;
+        left: 5%;
+      }
+
+      .pull-up-bar {
+        width: 200px;
+        bottom: 15%;
+        right: 5%;
+      }
+
+      .treadmill {
+        width: 180px;
+        top: 20%;
+        right: 10%;
+      }
+
+      .weightlifter {
+        width: 120px;
+        bottom: 10%;
+        left: 10%;
+      }
+
+      .contact-form-container {
+        max-width: 500px;
+        padding: 2rem;
+      }
+
+      .contact-form-container h2 {
+        font-size: 2rem;
+      }
+
+      .form-group textarea {
+        min-height: 150px;
+      }
+
+      .submit-btn {
+        padding: 1rem 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Fitness-Themed Images -->
+  <img src="/images/dumbbell.png" alt="Dumbbell" class="fitness-image dumbbell">
+  <img src="/images/pull-up-bar.png" alt="Pull-up Bar" class="fitness-image pull-up-bar">
+  <img src="/images/treadmill.png" alt="Treadmill" class="fitness-image treadmill">
+  <img src="/images/weightlifter.png" alt="Weightlifter" class="fitness-image weightlifter">
+
+  <!-- Contact Form -->
+  <div class="contact-form-container">
+    <h2>Contact Us</h2>
+    <form action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="76b5d8ca-2996-46ef-a83a-7938e385baf8"> <!-- Replace with your Web3Forms access key -->
+      <input type="hidden" name="subject" value="New Contact Form Submission"> <!-- Optional: Add a subject -->
+
+      <!-- Name Field -->
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+      </div>
+
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      </div>
+
+      <!-- Phone Field -->
+      <div class="form-group">
+        <label for="contact">Contact Number</label>
+        <input type="tel" id="contact" name="contact" placeholder="+1 Enter your contact number" required>
+      </div>
+
+      <!-- Message Field -->
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Enter your message" required></textarea>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="submit-btn">Send Message</button>
+    </form>
+  </div>
+</body>
+</html>
